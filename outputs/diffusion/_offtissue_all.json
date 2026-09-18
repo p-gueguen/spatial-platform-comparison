@@ -1,0 +1,510 @@
+{
+  "_config": {
+    "ring_um": 100.0,
+    "bin_um": 8.0,
+    "mask_quantiles": [
+      0.1,
+      0.2,
+      0.35
+    ],
+    "mask_quantile_main": 0.2
+  },
+  "stdxenium_breast": {
+    "n_in_tissue": 511280,
+    "n_off_tissue": 133305,
+    "median_in_tissue_counts": 52.0,
+    "offtissue_count_frac": 0.05724502097918178,
+    "offtissue_level_at_first_ring": 0.3147253722597546,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0
+    ],
+    "profile_y": [
+      0.3147253722597546,
+      0.1144471800209505,
+      0.01915513694485902,
+      0.0007233717311786864,
+      3.8080731150038084e-05
+    ],
+    "profile_n": [
+      116048,
+      11529,
+      3814,
+      1409,
+      505
+    ],
+    "ambient_floor": 5.03440050930359e-18,
+    "amplitude": 0.5584010234165478,
+    "lambda_out_um": 88.27152912663351,
+    "fit_adjR2": 0.9873963017349356,
+    "resolved": true,
+    "lambda_below_ring": true,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": 8264.688275541155,
+    "spearman_dist_vs_counts": -0.3714880882476121,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.006397851429296162,
+    "drift_x": -0.017058233170561776,
+    "drift_y": 0.03140961560540617,
+    "drift_mag": 0.03574279327893427,
+    "drift_deg": 118.5059214577101,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.005250049757467746,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 511280,
+    "exterior_bins": 133305,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "prime5k_breast": {
+    "n_in_tissue": 1080047,
+    "n_off_tissue": 1619657,
+    "median_in_tissue_counts": 48.0,
+    "offtissue_count_frac": 0.03910494386275555,
+    "offtissue_level_at_first_ring": 0.0890685123885863,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0,
+      550.0,
+      650.0,
+      750.0,
+      850.0,
+      950.0
+    ],
+    "profile_y": [
+      0.0890685123885863,
+      0.03944410418565785,
+      0.019335350541352766,
+      0.010307170003707823,
+      0.004790579932494631,
+      0.002965878733910791,
+      0.002042198800581778,
+      0.0013509118655092188,
+      0.002477169282130414,
+      0.001364067043486784
+    ],
+    "profile_n": [
+      550426,
+      280832,
+      161940,
+      107880,
+      81475,
+      61765,
+      50191,
+      39973,
+      34347,
+      30607
+    ],
+    "ambient_floor": 0.0016351994093608284,
+    "amplitude": 0.13087701934845122,
+    "lambda_out_um": 123.15743073658385,
+    "fit_adjR2": 0.999391180614881,
+    "resolved": true,
+    "lambda_below_ring": false,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": 65.2962864353883,
+    "spearman_dist_vs_counts": -0.49364228248590264,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.0016350185780254689,
+    "drift_x": -0.010821539245493535,
+    "drift_y": -0.0011855811034871269,
+    "drift_mag": 0.010886290194308736,
+    "drift_deg": -173.74775132610935,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.005932510532579186,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 1080047,
+    "exterior_bins": 1619657,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "wta_breast": {
+    "n_in_tissue": 734952,
+    "n_off_tissue": 189834,
+    "median_in_tissue_counts": 281.0,
+    "offtissue_count_frac": 0.006080279413428053,
+    "offtissue_level_at_first_ring": 0.10295727950486505,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0,
+      550.0,
+      650.0,
+      750.0,
+      850.0,
+      950.0
+    ],
+    "profile_y": [
+      0.10295727950486505,
+      0.029309364782053284,
+      0.009706789002671056,
+      0.0046273244274620245,
+      0.002916716226708935,
+      0.0023117087684499157,
+      0.0016867586595967164,
+      0.000584012404286856,
+      0.0,
+      0.0
+    ],
+    "profile_n": [
+      120427,
+      31009,
+      14112,
+      7190,
+      4817,
+      2928,
+      2498,
+      2084,
+      1658,
+      1244
+    ],
+    "ambient_floor": 0.001264155777741305,
+    "amplitude": 0.19135729348179537,
+    "lambda_out_um": 78.96381186878467,
+    "fit_adjR2": 0.9989839203682851,
+    "resolved": true,
+    "lambda_below_ring": true,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": null,
+    "spearman_dist_vs_counts": -0.5464577841229431,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.005573438102522252,
+    "drift_x": 0.027384373825908196,
+    "drift_y": 0.04493047318239346,
+    "drift_mag": 0.05261797554287759,
+    "drift_deg": 58.638389411678894,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.019820792232509234,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 734952,
+    "exterior_bins": 189834,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "visiumhd65_breast_8um": {
+    "n_in_tissue": 627444,
+    "n_off_tissue": 101872,
+    "median_in_tissue_counts": 79.0,
+    "offtissue_count_frac": 0.012264278515300635,
+    "offtissue_level_at_first_ring": 0.1154430704254375,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0,
+      550.0,
+      650.0
+    ],
+    "profile_y": [
+      0.1154430704254375,
+      0.06654051445255195,
+      0.03676268861454047,
+      0.02072699532991398,
+      0.02440230217437945,
+      0.014297212263115533,
+      0.012658227848101266
+    ],
+    "profile_n": [
+      78015,
+      15894,
+      3645,
+      2041,
+      1357,
+      865,
+      55
+    ],
+    "ambient_floor": 0.011816575771357833,
+    "amplitude": 0.14679650053240148,
+    "lambda_out_um": 145.7645486474471,
+    "fit_adjR2": 0.9887542145455659,
+    "resolved": true,
+    "lambda_below_ring": false,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": 9.120002563609562,
+    "spearman_dist_vs_counts": -0.33662312872934386,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.005302151733623711,
+    "drift_x": -0.009515260141410131,
+    "drift_y": -0.009462216205988134,
+    "drift_mag": 0.013419154633864713,
+    "drift_deg": -135.16014698994735,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.009072116529435502,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 627444,
+    "exterior_bins": 101872,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "visiumhd11_breast_8um": {
+    "n_in_tissue": 704293,
+    "n_off_tissue": 1257107,
+    "median_in_tissue_counts": 12.0,
+    "offtissue_count_frac": 0.02337734222874733,
+    "offtissue_level_at_first_ring": 0.13716557292646722,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0,
+      550.0,
+      650.0,
+      750.0
+    ],
+    "profile_y": [
+      0.13716557292646722,
+      0.0849760931698587,
+      0.06638236981439748,
+      0.05524853686715204,
+      0.04716779757726521,
+      0.04136052347020822,
+      0.03570783676417479,
+      0.026309995596653455
+    ],
+    "profile_n": [
+      510176,
+      274538,
+      202781,
+      140509,
+      81203,
+      36067,
+      11076,
+      757
+    ],
+    "ambient_floor": 0.030923714921438417,
+    "amplitude": 0.13513199497357192,
+    "lambda_out_um": 187.53736372044273,
+    "fit_adjR2": 0.9777487043779961,
+    "resolved": true,
+    "lambda_below_ring": false,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": 5.213439600267901,
+    "spearman_dist_vs_counts": -0.3447584598980832,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.002222121896840581,
+    "drift_x": -0.012474310436240093,
+    "drift_y": -0.0035911152994088074,
+    "drift_mag": 0.012980929471857418,
+    "drift_deg": -163.93990270268569,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.0030086044718461154,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 704293,
+    "exterior_bins": 1257107,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "stratamap_breast": {
+    "n_in_tissue": 708031,
+    "n_off_tissue": 817549,
+    "median_in_tissue_counts": 4323.0,
+    "offtissue_count_frac": 0.009886295150692096,
+    "offtissue_level_at_first_ring": 0.048383528920224614,
+    "ring_um": 100.0,
+    "profile_r_um": [
+      50.0,
+      150.0,
+      250.0,
+      350.0,
+      450.0,
+      550.0,
+      650.0,
+      750.0,
+      850.0,
+      950.0
+    ],
+    "profile_y": [
+      0.048383528920224614,
+      0.018751149822857808,
+      0.011479267217077493,
+      0.0072849026306616325,
+      0.004515258323155975,
+      0.0032625218406768814,
+      0.002659696004333696,
+      0.0018425301650460738,
+      0.00036698967466356137,
+      0.00031657578182041416
+    ],
+    "profile_n": [
+      87095,
+      69715,
+      58676,
+      48127,
+      43547,
+      37533,
+      33971,
+      30050,
+      27637,
+      25532
+    ],
+    "ambient_floor": 0.0019594367755875787,
+    "amplitude": 0.07039505837492115,
+    "lambda_out_um": 116.13671777600689,
+    "fit_adjR2": 0.9870135767425636,
+    "resolved": true,
+    "lambda_below_ring": false,
+    "lambda_note": "descriptive only: the amplitude and the floor are not separately identifiable at large lambda, so lambda is not the test statistic",
+    "n_perm": 100,
+    "near_far_ratio": 152.83395540241114,
+    "spearman_dist_vs_counts": -0.5586841773054024,
+    "spearman_p": 0.009900990099009901,
+    "spearman_null_p01": -0.002177136168518441,
+    "drift_x": -0.22759975058775245,
+    "drift_y": -0.11889371528600619,
+    "drift_mag": 0.25678271359676264,
+    "drift_deg": -152.41830241618146,
+    "drift_p": 0.009900990099009901,
+    "drift_null_p99": 0.007477477235798927,
+    "mask_quantile": 0.2,
+    "complement": "exterior",
+    "bin_um": 8.0,
+    "tissue_bins": 708031,
+    "exterior_bins": 817549,
+    "interior_bins": 0,
+    "interior_share_of_complement": 0.0
+  },
+  "_interior": {
+    "stdxenium_breast": {
+      "error": "only 0 interior bins"
+    },
+    "prime5k_breast": {
+      "error": "only 0 interior bins"
+    },
+    "wta_breast": {
+      "error": "only 0 interior bins"
+    },
+    "visiumhd65_breast_8um": {
+      "error": "only 0 interior bins"
+    },
+    "visiumhd11_breast_8um": {
+      "error": "only 0 interior bins"
+    },
+    "stratamap_breast": {
+      "error": "only 0 interior bins"
+    }
+  },
+  "_threshold_sensitivity": {
+    "stdxenium_breast": {
+      "level": {
+        "0.1": 0.2515522941411776,
+        "0.2": 0.3147253722597546,
+        "0.35": 0.33095177675351956
+      },
+      "drift": {
+        "0.1": 0.12244062390042222,
+        "0.2": 0.03574279327893427,
+        "0.35": 0.0229099803505604
+      }
+    },
+    "prime5k_breast": {
+      "level": {
+        "0.1": 0.0733509812867768,
+        "0.2": 0.0890685123885863,
+        "0.35": 0.1273746769617412
+      },
+      "drift": {
+        "0.1": 0.01057770426937193,
+        "0.2": 0.010886290194308736,
+        "0.35": 0.014313186987635014
+      }
+    },
+    "wta_breast": {
+      "level": {
+        "0.1": 0.06142064646762052,
+        "0.2": 0.10295727950486505,
+        "0.35": 0.11046261294156745
+      },
+      "drift": {
+        "0.1": 0.0789330482471472,
+        "0.2": 0.05261797554287759,
+        "0.35": 0.021340019807796772
+      }
+    },
+    "visiumhd65_breast_8um": {
+      "level": {
+        "0.1": 0.07140804521099352,
+        "0.2": 0.1154430704254375,
+        "0.35": 0.17016465612912446
+      },
+      "drift": {
+        "0.1": 0.06365590157035617,
+        "0.2": 0.013419154633864713,
+        "0.35": 0.007870230557817956
+      }
+    },
+    "visiumhd11_breast_8um": {
+      "level": {
+        "0.1": 0.13716557292646722,
+        "0.2": 0.13716557292646722,
+        "0.35": 0.08801449608259587
+      },
+      "drift": {
+        "0.1": 0.012980929471857418,
+        "0.2": 0.012980929471857418,
+        "0.35": 0.008055596837274533
+      }
+    },
+    "stratamap_breast": {
+      "level": {
+        "0.1": 0.012183244807171287,
+        "0.2": 0.048383528920224614,
+        "0.35": 0.23666044239257233
+      },
+      "drift": {
+        "0.1": 0.16197984436836074,
+        "0.2": 0.25678271359676264,
+        "0.35": 0.06509942554118546
+      }
+    }
+  },
+  "_vendor_bridge": {
+    "visiumhd65_breast_8um": {
+      "vendor_first_ring": 0.1517573074210485,
+      "derived_first_ring": 0.1154430704254375,
+      "ratio": 0.7607084784730815,
+      "vendor_drift": 0.009450198894761778,
+      "derived_drift": 0.013419154633864713,
+      "vendor_unit": "8 um bin",
+      "derived_unit": "8 um bin, mask q=0.2"
+    },
+    "visiumhd11_breast_8um": {
+      "vendor_first_ring": 0.11404331120891603,
+      "derived_first_ring": 0.13716557292646722,
+      "ratio": 1.202749827871917,
+      "vendor_drift": 0.02978140112279656,
+      "derived_drift": 0.012980929471857418,
+      "vendor_unit": "8 um bin",
+      "derived_unit": "8 um bin, mask q=0.2"
+    }
+  }
+}

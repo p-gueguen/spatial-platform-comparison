@@ -1,0 +1,9 @@
+celltype,n_cells,median_tx_per_cell,median_genes_per_cell,median_L1_tx_per_cell
+Epithelial/Tumor,33051,596.000,519.000,17.000
+T cell,6258,311.000,278.000,10.000
+B/Plasma,8684,157.000,127.000,4.000
+Myeloid,14794,368.000,326.000,11.000
+Fibroblast,21198,177.000,161.000,4.000
+Endothelial,6649,466.000,408.000,14.000
+Mast,24220,27.000,26.000,1.000
+Unassigned,2876,3.000,3.000,0.000

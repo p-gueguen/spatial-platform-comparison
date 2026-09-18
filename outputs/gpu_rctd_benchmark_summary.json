@@ -1,0 +1,216 @@
+{
+  "Atera_FFPE_5k": {
+    "dataset": "Atera_FFPE_5k",
+    "n_cells_evaluated": 5000,
+    "elapsed_seconds": 119.7,
+    "spot_class_fractions": {
+      "doublet_certain": 0.3508,
+      "singlet": 0.3356,
+      "doublet_uncertain": 0.2256,
+      "reject": 0.088
+    },
+    "median_entropy": 1.704551549432056,
+    "n_singlets": 1678,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.4129916567342074,
+      "Fibroblast_stromal": 0.31287246722288437,
+      "T_NK": 0.10488676996424315,
+      "Endothelial": 0.09535160905840286,
+      "Myeloid": 0.04648390941597139,
+      "Mural": 0.017878426698450536,
+      "Mast": 0.004171632896305125,
+      "B_plasma": 0.004171632896305125,
+      "Epithelial": 0.0005959475566150178,
+      "Adipocyte": 0.0005959475566150178
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.5658508158508159,
+      "Fibroblast_stromal": 0.18152680652680653,
+      "Endothelial": 0.10635198135198135,
+      "T_NK": 0.056818181818181816,
+      "Myeloid": 0.038461538461538464,
+      "Mural": 0.022435897435897436,
+      "Epithelial": 0.016608391608391608,
+      "B_plasma": 0.008741258741258742,
+      "Mast": 0.002913752913752914,
+      "Adipocyte": 0.0002913752913752914
+    },
+    "immune_fraction_of_singlets": 0.15971394517282478,
+    "immune_fraction_of_confident": 0.10693473193473194
+  },
+  "StrataMap_Grade1_5k": {
+    "dataset": "StrataMap_Grade1_5k",
+    "n_cells_evaluated": 5000,
+    "elapsed_seconds": 49.1,
+    "spot_class_fractions": {
+      "reject": 0.556,
+      "singlet": 0.444
+    },
+    "median_entropy": 0.9617611287570162,
+    "n_singlets": 2220,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.8783783783783784,
+      "Fibroblast_stromal": 0.07477477477477477,
+      "Endothelial": 0.027927927927927927,
+      "Myeloid": 0.009009009009009009,
+      "Mural": 0.006306306306306306,
+      "Epithelial": 0.0013513513513513514,
+      "B_plasma": 0.0009009009009009009,
+      "T_NK": 0.0009009009009009009,
+      "Mast": 0.00045045045045045046
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.8783783783783784,
+      "Fibroblast_stromal": 0.07477477477477477,
+      "Endothelial": 0.027927927927927927,
+      "Myeloid": 0.009009009009009009,
+      "Mural": 0.006306306306306306,
+      "Epithelial": 0.0013513513513513514,
+      "B_plasma": 0.0009009009009009009,
+      "T_NK": 0.0009009009009009009,
+      "Mast": 0.00045045045045045046
+    },
+    "immune_fraction_of_singlets": 0.01126126126126126,
+    "immune_fraction_of_confident": 0.01126126126126126
+  },
+  "StrataMap_Grade2_5k": {
+    "dataset": "StrataMap_Grade2_5k",
+    "n_cells_evaluated": 5000,
+    "elapsed_seconds": 77.2,
+    "spot_class_fractions": {
+      "reject": 0.6252,
+      "singlet": 0.3744,
+      "doublet_uncertain": 0.0002,
+      "doublet_certain": 0.0002
+    },
+    "median_entropy": 1.297478988282515,
+    "n_singlets": 1872,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.9626068376068376,
+      "Fibroblast_stromal": 0.018162393162393164,
+      "Myeloid": 0.013888888888888888,
+      "Endothelial": 0.003205128205128205,
+      "Epithelial": 0.0010683760683760685,
+      "T_NK": 0.0005341880341880342,
+      "B_plasma": 0.0005341880341880342
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.9620928990923652,
+      "Fibroblast_stromal": 0.018152696209289908,
+      "Myeloid": 0.013881473571809931,
+      "Endothelial": 0.0037373198077949813,
+      "Epithelial": 0.0010678056593699946,
+      "T_NK": 0.0005339028296849973,
+      "B_plasma": 0.0005339028296849973
+    },
+    "immune_fraction_of_singlets": 0.014957264957264956,
+    "immune_fraction_of_confident": 0.014949279231179925
+  },
+  "StrataMap_Grade3_5k": {
+    "dataset": "StrataMap_Grade3_5k",
+    "n_cells_evaluated": 5000,
+    "elapsed_seconds": 67.7,
+    "spot_class_fractions": {
+      "singlet": 0.5588,
+      "reject": 0.4398,
+      "doublet_uncertain": 0.001,
+      "doublet_certain": 0.0004
+    },
+    "median_entropy": 1.1587637771923711,
+    "n_singlets": 2794,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.8994273443092341,
+      "Myeloid": 0.0572655690765927,
+      "Fibroblast_stromal": 0.032569792412312094,
+      "Endothelial": 0.0046528274874731565,
+      "B_plasma": 0.0035790980672870437,
+      "T_NK": 0.0014316392269148174,
+      "Epithelial": 0.0010737294201861132
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.8994992846924177,
+      "Myeloid": 0.05722460658082976,
+      "Fibroblast_stromal": 0.032546494992846925,
+      "Endothelial": 0.004649499284692418,
+      "B_plasma": 0.00357653791130186,
+      "T_NK": 0.001430615164520744,
+      "Epithelial": 0.001072961373390558
+    },
+    "immune_fraction_of_singlets": 0.06227630637079456,
+    "immune_fraction_of_confident": 0.06223175965665236
+  },
+  "StrataMap_Proseg_5k": {
+    "dataset": "StrataMap_Proseg_5k",
+    "n_cells_evaluated": 4999,
+    "elapsed_seconds": 53.4,
+    "spot_class_fractions": {
+      "singlet": 0.7635527105421084,
+      "reject": 0.21164232846569314,
+      "doublet_certain": 0.015003000600120024,
+      "doublet_uncertain": 0.009801960392078415
+    },
+    "median_entropy": 0.9131467642779099,
+    "n_singlets": 3817,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.7225569819229761,
+      "Fibroblast_stromal": 0.18862981399004453,
+      "Endothelial": 0.05632695834424941,
+      "Myeloid": 0.019648938957296306,
+      "Epithelial": 0.006287660466334818,
+      "Mural": 0.0039297877914592615,
+      "B_plasma": 0.001047943411055803,
+      "Mast": 0.001047943411055803,
+      "T_NK": 0.0005239717055279015
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.7163412127440905,
+      "Fibroblast_stromal": 0.19039054470709146,
+      "Endothelial": 0.05755395683453238,
+      "Myeloid": 0.020554984583761562,
+      "Epithelial": 0.008221993833504625,
+      "Mural": 0.004367934224049332,
+      "B_plasma": 0.0010277492291880781,
+      "Mast": 0.0010277492291880781,
+      "T_NK": 0.0005138746145940391
+    },
+    "immune_fraction_of_singlets": 0.022268797484935814,
+    "immune_fraction_of_confident": 0.023124357656731757
+  },
+  "Atera_Proseg_2.5k": {
+    "dataset": "Atera_Proseg_2.5k",
+    "n_cells_evaluated": 2500,
+    "elapsed_seconds": 60.4,
+    "spot_class_fractions": {
+      "singlet": 0.3812,
+      "doublet_certain": 0.376,
+      "doublet_uncertain": 0.1676,
+      "reject": 0.0752
+    },
+    "median_entropy": 1.5630137676685674,
+    "n_singlets": 953,
+    "singlet_lineage_fractions": {
+      "Malignant": 0.565582371458552,
+      "Fibroblast_stromal": 0.19412381951731375,
+      "T_NK": 0.09233997901364113,
+      "Endothelial": 0.06610703043022036,
+      "Myeloid": 0.055613850996852045,
+      "B_plasma": 0.011542497376705142,
+      "Mural": 0.01049317943336831,
+      "Mast": 0.002098635886673662,
+      "Epithelial": 0.002098635886673662
+    },
+    "confident_lineage_fractions": {
+      "Malignant": 0.6613840464870576,
+      "Fibroblast_stromal": 0.11568938193343899,
+      "Endothelial": 0.06973058637083994,
+      "T_NK": 0.06973058637083994,
+      "Myeloid": 0.04754358161648178,
+      "Epithelial": 0.014263074484944533,
+      "B_plasma": 0.010036978341257264,
+      "Mural": 0.009508716323296355,
+      "Mast": 0.0021130480718436345
+    },
+    "immune_fraction_of_singlets": 0.161594963273872,
+    "immune_fraction_of_confident": 0.1294241944004226
+  }
+}

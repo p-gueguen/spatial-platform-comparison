@@ -1,0 +1,6 @@
+,prime5k_breast,wta_breast,visiumhd65_breast_8um,visiumhd11_breast_8um,stratamap_breast
+prime5k_breast,1.0000,0.7582,0.7957,0.8245,0.8357
+wta_breast,0.7582,1.0000,0.7935,0.7856,0.7687
+visiumhd65_breast_8um,0.7957,0.7935,1.0000,0.8982,0.8279
+visiumhd11_breast_8um,0.8245,0.7856,0.8982,1.0000,0.8843
+stratamap_breast,0.8357,0.7687,0.8279,0.8843,1.0000

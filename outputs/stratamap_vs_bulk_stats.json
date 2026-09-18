@@ -1,0 +1,14 @@
+{
+  "StrataMap (poly-A in-situ)": {
+    "detected": 19026,
+    "n50": 561,
+    "n90": 5500,
+    "top": 0.8595977882255859
+  },
+  "Bulk breast RNA-seq (HPA)": {
+    "detected": 17162,
+    "n50": 90,
+    "n90": 3889,
+    "top": 3.926164268478486
+  }
+}

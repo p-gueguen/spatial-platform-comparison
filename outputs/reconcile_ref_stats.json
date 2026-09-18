@@ -1,0 +1,121 @@
+{
+  "p14_release": "GENCODE Release 48 (2025-07-03, GRCh38.p14)",
+  "p14_genes": 78875,
+  "stratamap_ref": "GENCODE ~v41 (GRCh38.p13)",
+  "stratamap_models": 61860,
+  "ensg_stable": 60636,
+  "ensg_stable_pct": 98.0,
+  "ensg_retired": 1224,
+  "ensg_gained": 18239,
+  "symbol_drift": 1396,
+  "pc_list": 19973,
+  "pc_present_p14": 19899,
+  "pc_present_p14_pct": 99.6,
+  "pc_still_pc_p14": 19849,
+  "core_n": 304,
+  "core_in_p14": 304,
+  "core_in_stratamap": 304,
+  "core_missing_p14": [],
+  "drift_examples": [
+    {
+      "ensg": "ENSG00000000460",
+      "stratamap": "C1ORF112",
+      "p14": "FIRRM"
+    },
+    {
+      "ensg": "ENSG00000005238",
+      "stratamap": "FAM214B",
+      "p14": "ATOSB"
+    },
+    {
+      "ensg": "ENSG00000007202",
+      "stratamap": "KIAA0100",
+      "p14": "BLTP2"
+    },
+    {
+      "ensg": "ENSG00000029153",
+      "stratamap": "ARNTL2",
+      "p14": "BMAL2"
+    },
+    {
+      "ensg": "ENSG00000042304",
+      "stratamap": "C2ORF83",
+      "p14": "SLC19A4P"
+    },
+    {
+      "ensg": "ENSG00000047346",
+      "stratamap": "FAM214A",
+      "p14": "ATOSA"
+    },
+    {
+      "ensg": "ENSG00000047621",
+      "stratamap": "C12ORF4",
+      "p14": "FERRY3"
+    },
+    {
+      "ensg": "ENSG00000065054",
+      "stratamap": "SLC9A3R2",
+      "p14": "NHERF2"
+    },
+    {
+      "ensg": "ENSG00000065060",
+      "stratamap": "UHRF1BP1",
+      "p14": "BLTP3A"
+    },
+    {
+      "ensg": "ENSG00000079393",
+      "stratamap": "DUSP13",
+      "p14": "DUSP13B"
+    },
+    {
+      "ensg": "ENSG00000081870",
+      "stratamap": "HSPB11",
+      "p14": "IFT25"
+    },
+    {
+      "ensg": "ENSG00000101220",
+      "stratamap": "C20ORF27",
+      "p14": "ADISSP"
+    },
+    {
+      "ensg": "ENSG00000103021",
+      "stratamap": "CCDC113",
+      "p14": "CFAP263"
+    },
+    {
+      "ensg": "ENSG00000104059",
+      "stratamap": "FAM189A1",
+      "p14": "ENTREP2"
+    },
+    {
+      "ensg": "ENSG00000105549",
+      "stratamap": "THEG",
+      "p14": "SPMAP2"
+    },
+    {
+      "ensg": "ENSG00000105948",
+      "stratamap": "TTC26",
+      "p14": "IFT56"
+    },
+    {
+      "ensg": "ENSG00000107201",
+      "stratamap": "DDX58",
+      "p14": "RIGI"
+    },
+    {
+      "ensg": "ENSG00000108958",
+      "stratamap": "ENSG00000108958",
+      "p14": "SDHCP5"
+    },
+    {
+      "ensg": "ENSG00000109062",
+      "stratamap": "SLC9A3R1",
+      "p14": "NHERF1"
+    },
+    {
+      "ensg": "ENSG00000111647",
+      "stratamap": "UHRF1BP1L",
+      "p14": "BLTP3B"
+    }
+  ]
+}

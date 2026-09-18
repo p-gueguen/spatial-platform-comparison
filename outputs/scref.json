@@ -1,0 +1,30 @@
+{
+  "10x 3' v3": {
+    "label": "10x 3' v3 (droplet, poly-A)",
+    "n_cells_total": 351617,
+    "n_sampled": 3000,
+    "median_genes_per_cell": 1271.0,
+    "median_umis_per_cell": 2976.5
+  },
+  "10x 5' v2": {
+    "label": "10x 5' v2 (droplet, poly-A)",
+    "n_cells_total": 27970,
+    "n_sampled": 3000,
+    "median_genes_per_cell": 1423.5,
+    "median_umis_per_cell": 3521.0
+  },
+  "Smart-seq2": {
+    "label": "Smart-seq2 (plate, full-length)",
+    "n_cells_total": 1010,
+    "n_sampled": 1010,
+    "median_genes_per_cell": 1557.0,
+    "median_umis_per_cell": 3972.0
+  },
+  "flex": {
+    "label": "10x Flex (probe, DTC)",
+    "n_cells_total": 10867,
+    "n_sampled": 10867,
+    "median_genes_per_cell": 6966.0,
+    "median_umis_per_cell": 35897.0
+  }
+}

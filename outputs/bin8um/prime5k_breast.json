@@ -1,0 +1,16 @@
+{
+  "name": "prime5k_breast",
+  "unit": "8um_bin",
+  "n_bins": 1483525,
+  "n_gex_genes": 5099,
+  "area_mm2": 155.1598,
+  "median_genes_per_bin": 22.0,
+  "median_tx_per_bin": 24.0,
+  "total_tx": 80158637.0,
+  "L1_n_genes_present": 187,
+  "L1_median_tx_per_bin": 1.0,
+  "L1_transcripts_per_mm2_per_gene": 144.37197826194205,
+  "L2_n_genes_present": 4843,
+  "L2_median_tx_per_bin": 22.0,
+  "L2_transcripts_per_mm2_per_gene": 97.6446240497415
+}

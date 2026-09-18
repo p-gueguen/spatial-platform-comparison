@@ -1,0 +1,12 @@
+{
+  "tcga_n_tumours": 1106,
+  "tcga_median_libsize": 55766224,
+  "tcga_n90_median": 5982,
+  "tcga_n90_lo": 5501,
+  "tcga_n90_hi": 6420,
+  "tcga_ndet_median": 17279,
+  "stratamap_downsampled_n90": 5500,
+  "stratamap_downsampled_ndet": 17102,
+  "stratamap_full_n90": 5500,
+  "stratamap_full_ndet": 19026
+}

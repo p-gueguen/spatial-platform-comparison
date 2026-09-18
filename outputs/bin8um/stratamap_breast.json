@@ -1,0 +1,9 @@
+{
+  "name": "stratamap_breast",
+  "unit": "8um_bin",
+  "n_bins": 865914,
+  "median_genes_per_bin": 1682.0,
+  "median_tx_per_bin": 3658.0,
+  "L1_median_tx_per_bin": 76.0,
+  "note": "1um SBC matrix gridded to 8um bins; genes/bin = protein-coding"
+}
