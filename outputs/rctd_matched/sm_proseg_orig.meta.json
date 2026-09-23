@@ -1,0 +1,9 @@
+{
+ "condition": "sm_proseg_orig",
+ "input": "/srv/GT/analysis/pgueguen/spatial_platform_comparison/outputs/proseg_stratamap/proseg_stratamap.h5ad",
+ "config": "orig",
+ "scale": 6.9776,
+ "n_input_cells": 21488,
+ "n_genes": 34888,
+ "n_fitted": 20725
+}

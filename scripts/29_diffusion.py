@@ -396,7 +396,7 @@ def fields_stratamap(want):
 # --------------------------------------------------------------------------- registry
 D = f"{ROOT}/data"
 DS = {
-    "stdxenium_breast":      ("xenium", "/srv/GT/analysis/rdegottardi/data/Janeson/xenium/outs/transcripts.parquet"),
+    "stdxenium_breast":      ("xenium", f"{D}/stdxenium_breast/transcripts.parquet"),
     "prime5k_breast":        ("xenium", f"{D}/prime5k_breast/transcripts.parquet"),
     "wta_breast":            ("xenium", f"{D}/atera_breast_tx/transcripts.parquet"),
     "visiumhd65_breast_8um": ("hd",     f"{D}/visiumhd_65_breast/binned_outputs/square_008um"),

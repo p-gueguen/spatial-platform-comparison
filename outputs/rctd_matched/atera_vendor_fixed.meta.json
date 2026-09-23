@@ -1,0 +1,9 @@
+{
+ "condition": "atera_vendor_fixed",
+ "input": "/srv/GT/analysis/pgueguen/spatial_platform_comparison/outputs/proseg_atera/atera_roi_standard.h5ad",
+ "config": "fixed",
+ "scale": 3.6056,
+ "n_input_cells": 12398,
+ "n_genes": 17949,
+ "n_fitted": 12398
+}

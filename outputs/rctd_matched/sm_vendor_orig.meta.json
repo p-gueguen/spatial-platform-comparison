@@ -1,0 +1,9 @@
+{
+ "condition": "sm_vendor_orig",
+ "input": "/srv/GT/analysis/pgueguen/spatial_platform_comparison/outputs/rctd_matched/sm_vendor_roi.h5ad",
+ "config": "orig",
+ "scale": 12.3812,
+ "n_input_cells": 21435,
+ "n_genes": 34112,
+ "n_fitted": 21425
+}

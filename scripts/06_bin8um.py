@@ -21,7 +21,7 @@ CTRL = r"^(NEGCONTROL|BLANK|ANTISENSE|UNASSIGNED|DEPRECATED|INTERGENIC|GENOMICCO
 
 # name -> (transcripts.parquet path, region_area_mm2 from metrics for per-area)
 DS = {
- "stdxenium_breast": ("/srv/GT/analysis/rdegottardi/data/Janeson/xenium/outs/transcripts.parquet", 41.1187),
+ "stdxenium_breast": (f"{ROOT}/data/stdxenium_breast/transcripts.parquet", 41.1187),
  "prime5k_breast":   (f"{ROOT}/data/prime5k_breast/transcripts.parquet", 155.1598),
  "wta_breast":       (f"{ROOT}/data/atera_breast_tx/transcripts.parquet", 58.9444),
 }

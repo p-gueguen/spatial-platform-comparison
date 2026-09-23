@@ -3,6 +3,12 @@
 36_rctd_gpu_benchmark.py
 GPU-accelerated RCTD cell type deconvolution for whole-transcriptome spatial platforms (rctd-py).
 Benchmarking 10x Atera vs Illumina StrataMap (Grades 1, 2, 3) and Proseg-dediffused data.
+
+SUPERSEDED by 40_rctd_matched_rerun.py - kept as the record of how the first numbers were made.
+Two problems with its results: (1) the thresholds scale with the INPUT matrix's feature count, which
+gave StrataMap a 3.4x larger CONFIDENCE_THRESHOLD than Atera and so more rejects; (2) the vendor and
+Proseg rows it was run on came from different regions. It also no longer runs on rctd-py >= 0.3
+(no `sigma_override`; `Reference.cell_type_names`, not `.cell_types`).
 """
 import os
 import sys

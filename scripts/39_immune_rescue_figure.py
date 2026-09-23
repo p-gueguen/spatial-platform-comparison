@@ -1,117 +1,50 @@
 #!/usr/bin/env python3
+"""39_immune_rescue_figure.py - Figure 28: RCTD on vendor vs Proseg segmentation, like-for-like.
+
+Reads outputs/rctd_matched/summary.csv (40_rctd_matched_rerun.py --summarise). Every bar is the same
+1.5 x 1.5 mm window per platform, reference genes only, one threshold scale. The earlier version of this
+figure hardcoded numbers from 36_rctd_gpu_benchmark.py, which compared a section-wide vendor subset
+with a Proseg window and scaled RCTD's thresholds with each input's feature count.
 """
-39_immune_rescue_figure.py
-Generate Figure 28: RCTD deconvolution, ambient tumor soup, and immune rescue.
-Contrasts 10x Atera FFPE against Illumina StrataMap (Grades 1, 2, 3) and Proseg-dediffused data.
-"""
-import os
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+import polars as pl
 
-def generate_figure(output_path="outputs/figs/28_rctd_immune_rescue.png"):
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, axes = plt.subplots(2, 2, figsize=(13, 10), dpi=200)
+ROOT = "/srv/GT/analysis/pgueguen/spatial_platform_comparison"
+ROWS = [("atera_vendor_fixed", "Atera\nvendor"), ("atera_proseg_fixed", "Atera\nProseg"),
+        ("sm_vendor_fixed", "StrataMap G1\nvendor"), ("sm_proseg_fixed", "StrataMap G1\nProseg")]
 
-    datasets = ['Atera FFPE\n(Std)', 'StrataMap G1\n(Std)', 'StrataMap G2\n(Std)', 'StrataMap G3\n(Std)', 'StrataMap G1\n(Proseg)']
-    x = np.arange(len(datasets))
 
-    # Panel A: Spot Classification (Singlet vs Reject vs Doublet)
-    ax = axes[0, 0]
-    singlets = [33.56, 44.40, 37.44, 55.88, 76.36]
-    rejects = [8.80, 55.60, 62.52, 43.98, 21.16]
-    doublets = [57.64, 0.00, 0.04, 0.14, 2.48]
+def main(out=f"{ROOT}/outputs/figs/28_rctd_immune_rescue.png"):
+    s = pl.read_csv(f"{ROOT}/outputs/rctd_matched/summary.csv")
+    d = {r["condition"]: r for r in s.iter_rows(named=True)}
+    rows = [(k, lab) for k, lab in ROWS if k in d]
+    x = np.arange(len(rows)); labs = [lab for _, lab in rows]
+    get = lambda col: np.array([100 * d[k][col] for k, _ in rows])
+    fig, ax = plt.subplots(1, 2, figsize=(12, 4.8), dpi=200)
 
-    b1 = ax.bar(x, singlets, width=0.55, label='Singlets (Usable)', color='#2ca02c', alpha=0.85)
-    b2 = ax.bar(x, doublets, width=0.55, bottom=singlets, label='Doublets', color='#ff7f0e', alpha=0.85)
-    bottom_rej = np.array(singlets) + np.array(doublets)
-    b3 = ax.bar(x, rejects, width=0.55, bottom=bottom_rej, label='Rejects (Mixture Noise)', color='#d62728', alpha=0.85)
+    sing, dbl, rej = get("singlet"), get("doublet"), get("reject")
+    ax[0].bar(x, sing, 0.6, label="singlet", color="#2ca02c")
+    ax[0].bar(x, dbl, 0.6, bottom=sing, label="doublet", color="#ff7f0e")
+    ax[0].bar(x, rej, 0.6, bottom=sing + dbl, label="reject", color="#d62728")
+    for i, r in enumerate(rej): ax[0].text(i, sing[i] + dbl[i] + r / 2, f"{r:.1f}%", ha="center", va="center", color="white", fontsize=9, fontweight="bold")
+    ax[0].set_ylabel("% of cells"); ax[0].set_ylim(0, 100); ax[0].set_xticks(x, labs)
+    ax[0].set_title("A  RCTD spot class, same window per platform"); ax[0].legend(fontsize=8, loc="lower right")
 
-    ax.set_ylabel('Spot Class Fraction (%)', fontsize=11, fontweight='bold')
-    ax.set_title('A: RCTD Spot Classification (Whole Transcriptome)', fontsize=12, fontweight='bold', pad=10)
-    ax.set_xticks(x)
-    ax.set_xticklabels(datasets, fontsize=9.5)
-    ax.set_ylim(0, 105)
-    ax.grid(axis='y', linestyle='--', alpha=0.3)
-    ax.legend(frameon=True, fontsize=9, loc='upper right')
+    mal, stro, endo, imm = get("malignant_of_singlets"), get("stroma_of_singlets"), get("endothelial_of_singlets"), get("immune_of_singlets")
+    b = np.zeros(len(rows))
+    for v, lab, col in [(mal, "malignant / epithelial", "#8c564b"), (stro, "stroma / mural", "#17becf"),
+                        (endo, "endothelial", "#bcbd22"), (imm, "immune", "#9467bd")]:
+        ax[1].bar(x, v, 0.6, bottom=b, label=lab, color=col); b = b + v
+    for i, v in enumerate(imm): ax[1].text(i, b[i] + 1.5, f"immune {v:.1f}%", ha="center", fontsize=8)
+    ax[1].set_ylabel("% of singlets"); ax[1].set_ylim(0, 110); ax[1].set_xticks(x, labs)
+    ax[1].set_title("B  lineage of singlets"); ax[1].legend(fontsize=8, loc="lower right")
+    fig.text(0.5, -0.02, "One 1.5 x 1.5 mm window per platform; different specimens and fixation (Atera FFPE, StrataMap fresh-frozen). "
+             "CELLxGENE Census poly-A reference.", ha="center", fontsize=8, color="#555")
+    fig.tight_layout(); fig.savefig(out, bbox_inches="tight"); print("wrote", out)
 
-    for i, (s, r) in enumerate(zip(singlets, rejects)):
-        ax.text(i, s/2, f'{s:.1f}%', ha='center', va='center', color='white', fontweight='bold', fontsize=8.5)
-        if r > 10:
-            ax.text(i, 100 - r/2, f'{r:.1f}%\nRej', ha='center', va='center', color='white', fontweight='bold', fontsize=8)
-
-    # Panel B: Major Lineage Distribution among Singlets
-    ax = axes[0, 1]
-    malignant = [41.3, 87.8, 96.3, 89.9, 72.3]
-    stroma = [31.3, 7.5, 1.8, 3.3, 18.9]
-    endothelial = [9.5, 2.8, 0.3, 0.5, 5.6]
-    immune = [16.0, 1.1, 1.5, 6.2, 2.2]
-
-    b_mal = ax.bar(x, malignant, width=0.55, label='Malignant / Epithelial', color='#8c564b', alpha=0.85)
-    b_str = ax.bar(x, stroma, width=0.55, bottom=malignant, label='Fibroblast / Stroma', color='#17becf', alpha=0.85)
-    b_end = ax.bar(x, endothelial, width=0.55, bottom=np.array(malignant)+np.array(stroma), label='Endothelial', color='#bcbd22', alpha=0.85)
-    b_imm = ax.bar(x, immune, width=0.55, bottom=np.array(malignant)+np.array(stroma)+np.array(endothelial), label='Immune Compartment', color='#9467bd', alpha=0.85)
-
-    ax.set_ylabel('Lineage Share in Singlets (%)', fontsize=11, fontweight='bold')
-    ax.set_title('B: Unmasking Stroma & Immune from Ambient Tumor Soup', fontsize=12, fontweight='bold', pad=10)
-    ax.set_xticks(x)
-    ax.set_xticklabels(datasets, fontsize=9.5)
-    ax.set_ylim(0, 105)
-    ax.grid(axis='y', linestyle='--', alpha=0.3)
-    ax.legend(frameon=True, fontsize=8.5, loc='upper right')
-
-    # Panel C: Immune Subsets (T/NK vs Myeloid)
-    ax = axes[1, 0]
-    width = 0.35
-    t_nk = [10.49, 0.09, 0.05, 0.14, 0.05]
-    myeloid = [4.65, 0.90, 1.39, 5.73, 1.96]
-
-    r1 = ax.bar(x - width/2, t_nk, width, label='T / NK Singlet %', color='#1f77b4', alpha=0.85)
-    r2 = ax.bar(x + width/2, myeloid, width, label='Myeloid Singlet %', color='#ff7f0e', alpha=0.85)
-
-    ax.set_ylabel('% of Confident Singlets', fontsize=11, fontweight='bold')
-    ax.set_title('C: Immune Compartment Singlet Recovery', fontsize=12, fontweight='bold', pad=10)
-    ax.set_xticks(x)
-    ax.set_xticklabels(datasets, fontsize=9.5)
-    ax.grid(axis='y', linestyle='--', alpha=0.3)
-    ax.legend(frameon=True, fontsize=9.5)
-
-    for i, (t, m) in enumerate(zip(t_nk, myeloid)):
-        ax.text(i - width/2, t + 0.2, f'{t:.2f}%', ha='center', va='bottom', fontsize=8, fontweight='bold', color='#1f77b4')
-        ax.text(i + width/2, m + 0.2, f'{m:.2f}%', ha='center', va='bottom', fontsize=8, fontweight='bold', color='#d95f02')
-    ax.set_ylim(0, 12.5)
-
-    # Panel D: Ambient Soup Stripping (EPCAM in T-cell candidates)
-    ax = axes[1, 1]
-    labels_d = ['Standard\nStrataMap G1', 'Proseg\nDe-diffused', 'Proseg +\nSPLIT Purified']
-    cd3_counts = [5, 119, 119]
-    epcam_in_t = [100.0, 36.8, 0.3]  # % of T cells contaminated with EPCAM (>0)
-
-    ax_twin = ax.twinx()
-    p1 = ax.bar(np.arange(3) - 0.18, cd3_counts, width=0.35, color='#386cb0', alpha=0.85, label='CD3D+ Cells (Count)')
-    p2 = ax_twin.bar(np.arange(3) + 0.18, epcam_in_t, width=0.35, color='#e41a1c', alpha=0.75, label='% T Cells with EPCAM Spillover')
-
-    ax.set_ylabel('Number of CD3D>=2 Cells Recovered', fontsize=10.5, fontweight='bold', color='#386cb0')
-    ax_twin.set_ylabel('% T Cells with Detectable EPCAM (Spillover)', fontsize=10.5, fontweight='bold', color='#e41a1c')
-    ax.set_title('D: Immune Rescue & Ambient Soup Elimination', fontsize=12, fontweight='bold', pad=10)
-    ax.set_xticks(np.arange(3))
-    ax.set_xticklabels(labels_d, fontsize=10)
-    ax.set_ylim(0, 140)
-    ax_twin.set_ylim(0, 115)
-    ax.grid(axis='y', linestyle='--', alpha=0.3)
-
-    for i, (c, e) in enumerate(zip(cd3_counts, epcam_in_t)):
-        ax.text(i - 0.18, c + 3, f'{c}', ha='center', va='bottom', fontsize=9, fontweight='bold', color='#386cb0')
-        ax_twin.text(i + 0.18, e + 2, f'{e:.1f}%', ha='center', va='bottom', fontsize=9, fontweight='bold', color='#e41a1c')
-
-    lines, labels = ax.get_legend_handles_labels()
-    lines2, labels2 = ax_twin.get_legend_handles_labels()
-    ax.legend(lines + lines2, labels + labels2, loc='upper left', fontsize=8.5, frameon=True)
-
-    plt.tight_layout()
-    plt.savefig(output_path, dpi=200, bbox_inches='tight')
-    print(f"Figure saved to {output_path}")
 
 if __name__ == "__main__":
-    generate_figure()
+    main()

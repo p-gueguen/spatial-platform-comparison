@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Download the missing 10x public datasets for the spatial platform comparison.
 # Xenium: individual files (small). VisiumHD: tarballs (matrix only available bundled).
-# On-disk already (symlinked, not downloaded): std Xenium breast (Janesick), Atera/WTA breast + cervical.
+# Atera/WTA breast + cervical: public 10x preview datasets, but their pages block scripted fetches -
+# one manual browser download each (see the Atera block below).
 set -uo pipefail   # NOTE: no -e; we want to attempt every file and report at the end
 
 ROOT=/srv/GT/analysis/pgueguen/spatial_platform_comparison
@@ -55,11 +56,24 @@ cd "$DATA/visiumhd_11_breast" && [[ -f binned_outputs.tar.gz ]] && \
 cd "$DATA/visiumhd_11_breast" && [[ -f segmented_outputs.tar.gz ]] && \
   tar -xzf segmented_outputs.tar.gz 2>>"$LOG" && say "extracted 11mm segmented"
 
-# ---------- Symlink on-disk datasets into one tree ----------
-say "Symlinking on-disk datasets ..."
-ln -sfn /srv/GT/analysis/rdegottardi/data/Janeson/xenium/outs "$DATA/stdxenium_breast"
-ln -sfn /srv/GT/analysis/pgueguen/rctd-py/atera/breast        "$DATA/wta_breast"
-ln -sfn /srv/GT/analysis/pgueguen/rctd-py/atera/cervical      "$DATA/wta_cervical"
+# ---------- Standard Xenium breast, 313-plex (Janesick et al. 2023, "PREVIEW: Human Breast Cancer", Replicate 1) ----------
+out="$DATA/stdxenium_breast"; mkdir -p "$out"
+bj="https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1"
+for f in cell_feature_matrix.h5 cells.parquet transcripts.parquet metrics_summary.csv gene_panel.json; do
+  get "${bj}_${f}" "$out/$f"
+done
+
+# ---------- Atera / Xenium WTA preview (breast + cervical): manual download ----------
+# Public, but the dataset pages sit behind a bot check, so fetch the Xenium Output Bundle in a browser:
+#   https://www.10xgenomics.com/datasets/atera-wta-ffpe-human-breast-cancer
+#   https://www.10xgenomics.com/datasets/atera-wta-ffpe-human-cervical-cancer
+# and place, per tissue:
+#   $DATA/wta_<tissue>/        cell_feature_matrix.h5, cells.parquet, metrics_summary.csv
+#   $DATA/atera_<tissue>_tx/   transcripts.parquet            (06_bin8um.py, 29_diffusion.py)
+for tis in breast cervical; do
+  if [[ -s "$DATA/wta_${tis}/cell_feature_matrix.h5" ]]; then say "OK   Atera ${tis} present"
+  else say "MISSING Atera ${tis}: download manually into $DATA/wta_${tis}/ (see comment above)"; fi
+done
 
 say "==== DOWNLOAD STAGE COMPLETE ===="
 du -sh "$DATA"/* 2>/dev/null | tee -a "$LOG"

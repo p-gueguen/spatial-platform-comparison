@@ -1391,61 +1391,51 @@ B.append(figblock("f-ct","08_celltype_sensitivity","Sensitivity by cell type (sh
    'targeted panels regardless of typing.</span></p>'))
 B.append('</div></section>')
 
-# section 05b: cell type separability & immune rescue
+# section 05b: RCTD on vendor vs Proseg segmentation, like-for-like (40_rctd_matched_rerun.py)
+RM = {r["condition"]: r for r in csv.DictReader(open(f"{OUT}/rctd_matched/summary.csv"))}
+def _p(c, k): return f'{100*float(RM[c][k]):.1f}%'
 B.append('<section class="band" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">')
-B.append('<div class="kicker"><span class="n">05b</span><h2>Cell-type separability, ambient soup, and immune rescue (Atera vs StrataMap)</h2></div>')
-B.append('<p class="sub" style="margin-bottom:18px">When evaluating whole-transcriptome spatial platforms, high raw transcript yields do not '
-         'automatically guarantee clean cell-type resolution. In fresh-frozen tissue, ambient transcript diffusion can coat '
-         'RNA-poor lymphocytes in tumor soup, making them undetectable under standard segmentation. Below, we evaluate '
-         'GPU-accelerated RCTD deconvolution across matched breast cancer datasets, quantify ambient diffusion, and '
-         'demonstrate computational rescue using probabilistic de-diffusion (Proseg) and transcript purification (SPLIT).</p>')
-
-B.append(figblock("f-rescue","28_rctd_immune_rescue","RCTD deconvolution, ambient tumor soup, and immune rescue",
-    '<p><b>A</b> - In standard segmentation, StrataMap Grade 1 and Grade 2 suffer massive mixture noise: RCTD rejects '
-    '<span class="stat">55.6%&ndash;62.5%</span> of all cells as unresolvable mixtures (compared to only <span class="stat">8.8%</span> in Atera). '
-    'Proseg de-diffusion slashes StrataMap rejects down to <span class="stat">21.2%</span> and boosts usable singlets to <span class="stat">76.4%</span>. '
-    '<b>B</b> - Standard StrataMap singlets are overwhelmingly classified as malignant (<span class="stat">88%&ndash;96%</span>) because ambient '
-    'epithelial transcripts coat every cell. Proseg strips the soup, allowing stromal (<span class="stat">7.5% &rarr; 18.9%</span>) and '
-    'endothelial (<span class="stat">2.8% &rarr; 5.6%</span>) compartments to emerge. '
-    '<b>C</b> - Immune singlets collapse in standard StrataMap: T/NK cells account for &lt;0.1% in Grade 1 and Grade 2 (Atera recovers <span class="stat">10.5%</span> T/NK and <span class="stat">16.0%</span> total immune). '
-    '<b>D</b> - Transcript-level rescue: in raw StrataMap Grade 1, only 5 cells had <i>CD3D</i>&ge;2. Proseg recovers <span class="stat">119</span> <i>CD3D</i>+ candidates, with 63% achieving zero <i>EPCAM</i> contamination; '
-    'subsequent SPLIT purification eliminates 99.7% of remaining <i>EPCAM</i> spillover.</p>'))
-
-B.append('<div class="tablewrap" style="margin-top:20px"><table class="master">'
-         '<thead><tr>'
-         '<th class="rlab" style="text-align:left">Dataset / Pipeline</th>'
-         '<th>Segmentation</th>'
-         '<th>RCTD Rejects</th>'
-         '<th>Singlets</th>'
-         '<th>Total Immune</th>'
-         '<th>T / NK Cells</th>'
-         '<th>Myeloid</th>'
-         '<th>Malignant</th>'
-         '<th>Stroma</th>'
-         '</tr></thead><tbody>'
-         '<tr><td class="rlab" style="text-align:left"><b>Atera FFPE 5k</b></td><td>Standard (10x)</td><td class="num">8.8%</td><td class="num">33.6%</td><td class="num" style="font-weight:680;color:#1B9E77">15.97%</td><td class="num" style="font-weight:680;color:#1B9E77">10.49%</td><td class="num">4.65%</td><td class="num">41.3%</td><td class="num">31.3%</td></tr>'
-         '<tr><td class="rlab" style="text-align:left"><b>StrataMap Grade 1 5k</b></td><td>Standard (Illumina)</td><td class="num" style="color:#d62728">55.6%</td><td class="num">44.4%</td><td class="num">1.13%</td><td class="num" style="color:#d62728">0.09% (2 cells)</td><td class="num">0.90%</td><td class="num">87.8%</td><td class="num">7.48%</td></tr>'
-         '<tr><td class="rlab" style="text-align:left"><b>StrataMap Grade 2 5k</b></td><td>Standard (Illumina)</td><td class="num" style="color:#d62728">62.5%</td><td class="num">37.4%</td><td class="num">1.50%</td><td class="num" style="color:#d62728">0.05% (1 cell)</td><td class="num">1.39%</td><td class="num">96.3%</td><td class="num">1.82%</td></tr>'
-         '<tr><td class="rlab" style="text-align:left"><b>StrataMap Grade 3 5k</b></td><td>Standard (Illumina)</td><td class="num">44.0%</td><td class="num">55.9%</td><td class="num">6.23%</td><td class="num">0.14% (4 cells)</td><td class="num">5.73%</td><td class="num">89.9%</td><td class="num">3.26%</td></tr>'
-         '<tr style="background:#F0F7F7"><td class="rlab" style="text-align:left"><b>StrataMap Grade 1 (Proseg)</b></td><td><b>Proseg De-diffused</b></td><td class="num" style="font-weight:680;color:#1B9E77">21.2%</td><td class="num" style="font-weight:680;color:#1B9E77">76.4%</td><td class="num" style="font-weight:680;color:#1B9E77">2.23%</td><td class="num">0.05%</td><td class="num" style="font-weight:680;color:#1B9E77">1.96%</td><td class="num">72.3%</td><td class="num" style="font-weight:680;color:#1B9E77">18.86%</td></tr>'
-         '<tr style="background:#EAF3F3"><td class="rlab" style="text-align:left"><b>StrataMap Grade 1 (Proseg + SPLIT)</b></td><td><b>De-diffused + Purified</b></td><td class="num">&mdash;</td><td class="num">&mdash;</td><td class="num" style="font-weight:680;color:#1B9E77">2.31%</td><td class="num" colspan="2" style="text-align:center;font-weight:600">50 T spots purified (99.7% EPCAM stripped)</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>'
-         '</tbody></table></div>'
-         '<p class="note" style="margin-top:10px">Evaluated across matched human breast cancer samples using GPU RCTD (rctd-py) deconvolved against the '
-         'Janesick et al. 2023 Chromium single-nucleus breast reference (10,689 cells across 40 fine cell types). Rejects denote spots failing confidence '
-         'or doublet likelihood ratio thresholds; lineages reflect confident singlet assignments.</p>')
-
+B.append('<div class="kicker"><span class="n">05b</span><h2>Cell typing on vendor vs Proseg segmentation (Atera vs StrataMap)</h2></div>')
+B.append('<p class="sub" style="margin-bottom:18px">RCTD (rctd-py 0.3.8, doublet mode) on one 1.5&nbsp;&times;&nbsp;1.5&nbsp;mm window per platform, '
+         'each segmented two ways: the vendor&rsquo;s cells and Proseg&rsquo;s. Every run uses the same reference genes and the same thresholds, so the '
+         'only thing that changes within a platform is the segmentation. <b>Proseg barely moves either platform.</b> What does separate them is '
+         'immune calls: under an identical configuration Atera types ' + _p("atera_vendor_fixed","immune_of_singlets") + ' of its singlets as immune, '
+         'StrataMap ' + _p("sm_vendor_fixed","immune_of_singlets") + '.</p>')
+B.append(figblock("f-rescue","28_rctd_immune_rescue","RCTD spot class and lineage, same window per platform",
+    '<p><b>A</b> - Rejects: Atera ' + _p("atera_vendor_fixed","reject") + ' vendor, ' + _p("atera_proseg_fixed","reject") + ' Proseg; '
+    'StrataMap grade 1 ' + _p("sm_vendor_fixed","reject") + ' vendor, ' + _p("sm_proseg_fixed","reject") + ' Proseg. '
+    '<b>B</b> - Immune share of singlets: Atera ' + _p("atera_vendor_fixed","immune_of_singlets") + ' &rarr; ' + _p("atera_proseg_fixed","immune_of_singlets") +
+    '; StrataMap ' + _p("sm_vendor_fixed","immune_of_singlets") + ' &rarr; ' + _p("sm_proseg_fixed","immune_of_singlets") + '. '
+    'T/NK singlets: Atera ' + _p("atera_vendor_fixed","T_NK_of_singlets") + ', StrataMap ' + _p("sm_vendor_fixed","T_NK_of_singlets") + '.</p>'))
+rows = [("atera_vendor_fixed","Atera","vendor (10x)"),("atera_proseg_fixed","Atera","Proseg"),
+        ("sm_vendor_fixed","StrataMap G1","vendor (Illumina)"),("sm_proseg_fixed","StrataMap G1","Proseg"),
+        ("sm_vendor_orig","StrataMap G1","vendor, first config*"),("sm_proseg_orig","StrataMap G1","Proseg, first config*")]
+t = ('<div class="tablewrap" style="margin-top:20px"><table class="master"><thead><tr><th class="rlab" style="text-align:left">Platform</th>'
+     '<th>Segmentation</th><th>Cells</th><th>Rejects</th><th>Singlets</th><th>Doublets</th><th>Immune (of singlets)</th><th>T / NK</th>'
+     '<th>Malignant / epithelial</th><th>Stroma</th></tr></thead><tbody>')
+for c, plat, seg in rows:
+    r = RM[c]
+    t += (f'<tr><td class="rlab" style="text-align:left"><b>{plat}</b></td><td>{seg}</td><td class="num">{int(r["n"]):,}</td>'
+          + "".join(f'<td class="num">{_p(c,k)}</td>' for k in ["reject","singlet","doublet","immune_of_singlets","T_NK_of_singlets","malignant_of_singlets","stroma_of_singlets"])
+          + '</tr>')
+t += '</tbody></table></div>'
+B.append(t + '<p class="note" style="margin-top:10px">Reference: CELLxGENE Census breast cancer (10,689 cells, 40 types; 10x 3&prime;/5&prime; poly-A, '
+         'Census 2025-11-08, restricted to the Atera panel genes; 00_build_rctd_reference.py). Inputs subset to the reference genes; '
+         'DOUBLET_THRESHOLD&nbsp;=&nbsp;20&nbsp;&times;&nbsp;3.61 and CONFIDENCE_THRESHOLD&nbsp;=&nbsp;5&nbsp;&times;&nbsp;3.61 for every run; sigma fitted per run. '
+         '*First config: the threshold scaling of the first version of this analysis, which multiplied both thresholds by each input&rsquo;s '
+         'feature count / 5,000 (12.4 for StrataMap vendor, 7.0 for StrataMap Proseg, 3.6 for Atera). A larger CONFIDENCE_THRESHOLD rejects more '
+         'cells, which is where the earlier 55.6% &rarr; 21.2% &ldquo;rescue&rdquo; came from, together with comparing a section-wide vendor subset '
+         'against the Proseg window. One window per platform, different specimens and fixation.</p>')
 B.append('<div class="grid2" style="margin-top:20px">'
-         '<div class="card"><h4>Why StrataMap Loses Immune Cells: The Ambient Soup</h4>'
-         '<p>Proseg diffusion modeling reveals that <b>55.8% of all transcripts</b> in StrataMap Grade 1 belong to unassigned ambient background diffusing across the slide. '
-         'In standard segmentation, small lymphocytes are bathed in high-abundance epithelial transcripts (<i>EPCAM</i>, <i>KRT8</i>, <i>KRT18</i>, <i>MUC1</i>). '
-         'RCTD’s likelihood solver either rejects the cell (55.6% reject rate) or forces it into a malignant classification (87.8%), rendering T cells virtually invisible.</p></div>'
-         '<div class="card"><h4>The Two-Stage Rescue: Proseg + SPLIT</h4>'
-         '<p><b>Proseg</b> is the crucial upstream enabler: by modeling 2D transcript diffusion and reassigning background soup, it unmasks true cell boundaries, '
-         'cutting rejects to 21.2% and increasing <i>CD3D</i>&ge;2 cells from 5 to 119. '
-         '<b>SPLIT</b> then operates downstream on the deconvolution weights, eliminating 99.7% of residual epithelial contamination from assigned T-cell spots. '
-         'Atera FFPE avoids this soup natively via probe-based chemistry, while StrataMap requires de-diffusion modeling to achieve clean immune resolution.</p></div>'
+         '<div class="card"><h4>What the window looks like</h4>'
+         '<p>In the grade 1 window, Illumina&rsquo;s Expanded-5&nbsp;&micro;m contours leave <b>16.8%</b> of transcripts outside every cell, and Proseg '
+         'assigns <b>5.5%</b> to background. Cells with <i>CD3D</i>&nbsp;&ge;&nbsp;1: 108 vendor, 119 Proseg (of ~21.4k); with <i>CD3D</i>&nbsp;&ge;&nbsp;2: '
+         '28 vendor, 19 Proseg. Atera&rsquo;s window has 267 vendor / 315 Proseg cells at <i>CD3D</i>&nbsp;&ge;&nbsp;2 out of 12.4k.</p></div>'
+         '<div class="card"><h4>What this does and does not say</h4>'
+         '<p>Resegmentation does not recover StrataMap&rsquo;s immune cells in this window, and it does not change either platform&rsquo;s reject rate. '
+         'The immune gap survives a reference whose poly-A chemistry is closer to StrataMap&rsquo;s. It does not separate chemistry from '
+         'specimen: the StrataMap block is fresh-frozen DCIS/IDC grade 1, the Atera block FFPE grade 3.</p></div>'
          '</div>')
-
 B.append('</div></section>')
 
 
